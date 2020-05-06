@@ -1,3 +1,1 @@
-# CP
-My competitive programming code
-# My Python code
+# My competitive programming code
