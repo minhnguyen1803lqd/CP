@@ -1,29 +1,83 @@
-#include <bits/stdc++.h>
+// C++ program for implementation of Ford Fulkerson algorithm 
+#include <iostream> 
+#include <limits.h> 
+#include <string.h> 
+#include <queue> 
+using namespace std; 
 
-#define FOR(i, l, r) for (int i = l; i <= r; i++)
-#define REP(i, n) for (int i = 0; i < n; i++)
-#define REV(i, l, r) for (int i = l; i >= r; i--)
-#define ii pair < int, int >
-#define vi vector < int >
-#define vii vector < ii >
-#define fi first
-#define se second
-#define pb push_back
-#define pp pop_back
-#define fr front
-#define mp make_pair
-#define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".ans").c_str(), "w", stdout);
-#define fast ios_base::sync_with_stdio(0);cin.tie(NULL);
+#define V 6 
 
-const int inf = 1e9 + 7;
+bool bfs(int rGraph[V][V], int s, int t, int parent[]) 
+{ 
+	bool visited[V]; 
+	memset(visited, 0, sizeof(visited)); 
+	queue <int> q; 
+	q.push(s); 
+	visited[s] = true; 
+	parent[s] = -1; 
 
-using namespace std;
+	while (!q.empty()) 
+	{ 
+		int u = q.front(); 
+		q.pop(); 
 
-int main() {
-    fileInput("");
-    fast;
+		for (int v=0; v<V; v++) 
+		{ 
+			if (visited[v]==false && rGraph[u][v] > 0) 
+			{ 
+				q.push(v); 
+				parent[v] = u; 
+				visited[v] = true; 
+			} 
+		} 
+	} 
 
+	return (visited[t] == true); 
+} 
 
+int fordFulkerson(int graph[V][V], int s, int t) 
+{ 
+	int u, v; 
+	int rGraph[V][V];
+	for (u = 0; u < V; u++) 
+		for (v = 0; v < V; v++) 
+			rGraph[u][v] = graph[u][v]; 
 
-    return(0);
-}
+	int parent[V];
+	int max_flow = 0;
+
+	while (bfs(rGraph, s, t, parent)) 
+	{ 
+		int path_flow = INT_MAX; 
+		for (v=t; v!=s; v=parent[v]) 
+		{ 
+			u = parent[v]; 
+			path_flow = min(path_flow, rGraph[u][v]); 
+		} 
+		for (v=t; v != s; v=parent[v]) 
+		{ 
+			u = parent[v]; 
+			rGraph[u][v] -= path_flow; 
+			rGraph[v][u] += path_flow; 
+		} 
+		max_flow += path_flow; 
+	} 
+	return max_flow; 
+} 
+
+// Driver program to test above functions 
+int main() 
+{ 
+	// Let us create a graph shown in the above example 
+	int graph[V][V] = { {0, 16, 13, 0, 0, 0}, 
+						{0, 0, 10, 12, 0, 0}, 
+						{0, 4, 0, 0, 14, 0}, 
+						{0, 0, 9, 0, 0, 20}, 
+						{0, 0, 0, 7, 0, 4}, 
+						{0, 0, 0, 0, 0, 0} 
+					}; 
+
+	cout << "The maximum possible flow is " << fordFulkerson(graph, 0, 5); 
+
+	return 0; 
+} 

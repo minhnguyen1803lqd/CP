@@ -1,20 +1,10 @@
 #include <bits/stdc++.h>
 
-#define FOR(i, l, r) for (int i = l; i <= r; i++)
-#define REP(i, n) for (int i = 0; i < n; i++)
-#define REV(i, l, r) for (int i = l; i >= r; i--)
 #define ii pair < int, int >
-#define vi vector < int >
-#define vii vector < ii >
 #define fi first
 #define se second
-#define pb push_back
-#define pp pop_back
-#define fr front
-#define mp make_pair
 #define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".out").c_str(), "w", stdout);
 #define fast ios_base::sync_with_stdio(0);cin.tie(NULL);
-#define graph vector < ii > g;
 
 const int inf = 1e9 + 7;
 const int N = 1e4 + 7;
@@ -22,64 +12,71 @@ const int N = 1e4 + 7;
 using namespace std;
 
 int n, m, source, sink;
-graph g[N];
-int f[N][N];
+int graph[N][N], revGraph[N][N];
 
-void input(int &n, int &m, int &source, int &sink, graph g[N]) {
-    cin >> n >> m >> source >> sink;
-    FOR(i, 1, m) {
-        int u, v, c;
-        cin >> u >> v >> c;
-        g[u].push_back(mp(v, c));
-    }
-}
-
-bool BFS(int startNode, int endNode, graph g[N]) {
+bool BFS(int revGraph[N][N], int source, int sink, int parent[N]) {
     int color[N];
     memset(color, 0, sizeof(color));
+    parent[source] = -1;
     queue < int > q;
-    q.push(startNode);
-    color[startNode] = 1;
-
+    q.push(source);
+    color[source] = 1;
     while (!q.empty()) {
         int u = q.front();
         q.pop();
-        if (u == endNode) {
+        if (u == sink) {
             return (true);
         }
-        REP(i, g[u].size()) {
-            v = g[u][i].fi;
-            if (!color[v]) {
-                color[v] = 1;
+        for (int v = 1; v <= n; v++) {
+            if (revGraph[u][v] > 0 and !color[v]) {
                 q.push(v);
+                color[v] = 1;
+                parent[v] = u;
             }
         }
     }
     return (false);
 }
 
-void fordFulkerson(int v, int source, int sink, graph g[N]) {
-    FOR(u, 1, n) {
-        FOR(v, 1, n) {
-            f[u][v] = 0;
+int fordFulkerson(int graph[N][N], int source, int sink) {
+    for (int u = 1; u <= n; u++) {
+        for (int v = 1; v <= n; v++) {
+            revGraph[u][v] = graph[u][v];
         }
     }
-    while (BFS(source, sink, g)) {
-        
+    int parent[N];
+    int maxFlow = 0;
+    while (BFS(revGraph, source, sink, parent)) {
+        int pathFlow = INT_MAX;
+        for (int v = sink; v != source; v = parent[v]) {
+            int u = parent[v];
+            pathFlow = min(pathFlow, revGraph[u][v]);
+        }
+        for (int v = sink; v != source; v = parent[v]) {
+            int u = parent[v];
+            revGraph[u][v] -= pathFlow;
+            revGraph[v][u] += pathFlow;
+        }
+        maxFlow += pathFlow;
     }
-}
-
-void solve() {
-    int res = fordFulkerson(n, source, sink, graph);
-    cout << res << endl;
+    return (maxFlow);
 }
 
 int main() {
     fileInput("nkflow");
     fast;
 
-    input(n, m, source, sink, g);
-    solve();    
+    memset(graph, 0, sizeof(graph));
+    memset(revGraph, 0, sizeof(revGraph));
+    cin >> n >> m >> source >> sink;
+    for (int i = 1; i <= m; i++) {
+        int u, v, c;
+        cin >> u >> v >> c;
+        graph[u][v] = c;
+    }
 
-    return(0);
+    int ans = fordFulkerson(graph, source, sink);
+    cout << ans << endl;
+
+    return (0);
 }
