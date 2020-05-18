@@ -113,23 +113,23 @@ int main() {
         graph[u][v] = c;
         edgeList[i] = newEdge;
     }
-    // cout << "graph: " << endl;
-    // for (int i = 1; i <= n; i++) {
-    //     for (int j = 1; j <= n; j++) {
-    //         cout << graph[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
+    cout << "graph: " << endl;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << graph[i][j] << " ";
+        }
+        cout << endl;
+    }
     int res = fordFulkerson(graph, source, sink);
     cout << res << endl;
-    // cout << "revGraph: " << endl;
-    // for (int i = 1; i <= n; i++) {
-    //     for (int j = 1; j <= n; j++) {
-    //         cout << revGraph[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-    // cout << endl;
+    cout << "revGraph: " << endl;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << revGraph[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
 
     mincutBFS();
     

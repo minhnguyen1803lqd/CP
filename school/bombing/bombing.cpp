@@ -15,22 +15,15 @@ const int inf = 1e9 + 7;
 const int N = 1e3 + 7;
 
 struct edge {
-    int u, v, w;
-    bool enable;
-    void show() {
-        cout << u << " " << v << " " << w << " " << enable << endl;
-    }
+    int u, v, cap, flow;
 };
 
 int n, m;
+int graph[N][N];
+int root[N], rank[N];
 edge edgeList[N];
-int rank[N], root[N];
 
-bool cmp(edge a, edge b) {
-    return (a.w < b.w);
-}
-
-void init(int n) {
+void init() {
     for (int i = 1; i <= n; i++) {
         rank[i] = 0;
         root[i] = i;
@@ -39,9 +32,8 @@ void init(int n) {
 }
 
 int findRoot(int u) {
-    if (root[u] == u) {
-        return (root[u]);
-    } else {
+    if (root[u] = u) return (root[u]);
+    else {
         root[u] = findRoot(root[u]);
         return (root[u]);
     }
@@ -61,9 +53,10 @@ void union(int u, int v) {
             rank[uu]++;
         }
     }
+    return;
 }
 
-int countConnectedComponent() {
+int countComponents() {
     int cnt[N];
     int ans = 0;
     memset(cnt, 0, sizeof(cnt));
@@ -71,52 +64,32 @@ int countConnectedComponent() {
         cnt[root[i]]++;
     }
     for (int i = 1; i <= n; i++) {
-        if (cnt[i] > 0) ++ans;
+        if (cnt[i]) ans++;
     }
     return (ans);
 }
 
-bool sameComponent(int u, int v) {
-    return (root[u] == root[v]);
-}
-
-void DSU() {
-    init(n);
-    for (int i = 1; i <= m; i++) {
-        edge _edge = edgeList[i];
-        if (_edge.enable) {
-            union(_edge.u, _edge.v);
-            union(_edge.v, _edge.u);
-        }
+void Karger() {
+    while (countComponents() > 2) {
+        int id = rand() % n;
+        
     }
-    return;
-}
-
-void disableEdge(int id) {
-    edgeList[id].enable = false;
 }
 
 int main() {
     fileInput("bombing");
     fast;
+    srand(time(NULL));
     cin >> n >> m;
     for (int i = 1; i <= m; i++) {
-        edge newEdge;
-        cin >> newEdge.u >> newEdge.v >> newEdge.w;
-        newEdge.enable = true;
-        edgeList[i] = newEdge;
+        int u, v, c;
+        cin >> u >> v >> c;
+        edge _edge;
+        _edge.u = u;
+        _edge.v = v;
+        _edge.cap = c;
+        graph[u][v] = c;
     }
-    sort(edgeList + 1, edgeList + 1 + m, cmp);
-    DSU();
-    int id = 1;
-    int ans = 0;
-    while (countConnectedComponent() == 1 and id <= m) {
-        disableEdge(id);
-        ans += edgeList[id++].w;
-        DSU();
-    }
-    cout << ans << endl;
-
 
     return (0);
 }
