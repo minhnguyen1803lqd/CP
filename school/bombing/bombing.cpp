@@ -70,9 +70,29 @@ int countComponents() {
 }
 
 void Karger() {
+    int ok[N];
+    memset(ok, 0, sizeof(ok));
     while (countComponents() > 2) {
-        int id = rand() % n;
-        
+        int id;
+        do {
+            id = rand() % m + 1;
+        } while (ok[id]);
+
+        edge _edge = edgeList[id];
+
+        int _u = findRoot(u);
+        int _v = findRoot(v);
+
+        if (_u == _v) {
+            return;
+        } else {
+            union(u, v);
+            for (int i = 1; i <= n; i++) {
+                cerr << root[i] << " ";
+            }
+            cerr << endl;
+            n--;
+        }
     }
 }
 
@@ -89,7 +109,10 @@ int main() {
         _edge.v = v;
         _edge.cap = c;
         graph[u][v] = c;
+        edgeList[i] = _edge;
     }
+
+    Karger();
 
     return (0);
 }
