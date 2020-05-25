@@ -10,18 +10,23 @@ using namespace std;
 #define se second
 
 const int inf = 1e9 + 7;
+const int N = 1e4 + 7;
 
-ll n, a, b;
+int n, k;
+int f[N][N];
 
 int main() {
-    fileInput("onum");
+    fileInput("order");
     fast;
-    scanf("%lld%lld%lld", &n, &a, &b);
-    if (a > b) {
-        cout << 0 << endl;
-        exit(0);
+    cin >> n >> k;
+    memset(f, 0, sizeof(f));
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= k; j++) {
+            cerr << f[i][j] << " ";
+        }
+        cerr << endl;
     }
-    ll ans = (n - 2) * b - (n - 2) * a + 1; 
-    printf("%lld", ans);
+    cout << f[n][k] << endl;
     return (0);
 }

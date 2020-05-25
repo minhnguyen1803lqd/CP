@@ -1,0 +1,9 @@
+First, you number all the student in group 1 as 1, group 2 as 2 and so on to group k. then you find the
+longest subsequence of the array of groups that you have numbered.
+
+-> Đầu tiên, đánh số 1 cho k học sinh ở trong nhóm 1, đánh số 2 cho k học sinh ở trong nhóm 2, làm tương
+tự cho dến hết. Sau đó, tìm dãy con tăng dài nhất với dãy số vừa được đánh số.
+
+  16 2 1 7 5 10
+-> 3 1 1 2 2  3
+-> 1 1 2 3 4  5

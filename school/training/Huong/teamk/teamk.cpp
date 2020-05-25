@@ -13,20 +13,12 @@ using namespace std;
 const int inf = 1e9 + 7;
 const int N = 5e4 + 7;
 
-struct node {
-    int val, org, mark;
-};
-
 int n, k;
-node a[N];
+iii a[N];
 int f[N];
 
-bool cmp(node a, node b) {
-    return (a.val < b.val);
-}
-
-bool cmp2(node a, node b) {
-    return (a.org < b.org);
+bool cmp(iii a, iii b) {
+    return (a.se < b.se);
 }
 
 int main() {
@@ -34,33 +26,31 @@ int main() {
     fast;
     cin >> n >> k;
     for (int i = 1; i <= n; i++) {
-        cin >> a[i].val;
-        a[i].org = i;
-        a[i].mark = 0;
+        cin >> a[i].se;
+        a[i].fi.fi = i;
     }
     sort(a + 1, a + 1 + n, cmp);
-    int id = 0;
+    int id = 1;
     for (int i = 1; i <= n / k; i++) {
         for (int j = 1; j <= k; j++) {
-            a[++id].mark = i;
+            a[id++].fi.se = i;
         }
     }
-    sort(a + 1, a + 1 + n, cmp2);
-    // for (int i = 1; i <= n; i++) {
-    //     cout << a[i].org << " " << a[i].mark << " " << a[i].val << endl;
-    // }
+    sort(a + 1, a + 1 + n);
     f[1] = 1;
     for (int i = 2; i <= n; i++) {
         f[i] = 1;
         for (int j = 1; j < i; j++) {
-            if (a[i].mark >= a[j].mark) {
+            if (a[i].fi.se >= a[j].fi.se) {
                 f[i] = max(f[i], f[j] + 1);
             }
         }
     }
-    int ans = inf;
-    for (int i = 1; i <= n; i++) ans = min(ans, n - f[i]);
-    cout << ans << endl;
+    int ans = -inf;
+    for (int i = 1; i <= n; i++) {
+        ans = max(ans, f[i]);
+    }
+    cout << n - ans << endl;
 
     return (0);
 }

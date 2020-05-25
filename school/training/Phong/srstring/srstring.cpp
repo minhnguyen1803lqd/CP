@@ -17,11 +17,22 @@ int main() {
     fileInput("srstring");
     fast;
     cin >> s;
-    for (int i = 0; i < s.length() - 1;) {
-        int id = i + 1;
-        while (s[i] == s[id] and id < s.length()) id++;
-        int tmp = (id - i);
-        i = id;
+    while (true) {
+        int flag = 0;
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (s[i] == s[i + 1]) {
+                s.erase(i, 2);
+                flag = 1;
+                break;
+            }
+        }
+        if (s.length() == 0) break;
+        if (flag == 0) break;
+    }
+    if (s.length() == 0) {
+        cout << "Empty String\n";
+    } else {
+        cout << s << endl;
     }
     return (0);
 }

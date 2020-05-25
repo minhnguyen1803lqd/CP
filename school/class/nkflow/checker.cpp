@@ -2,10 +2,8 @@
 
 using namespace std;
 
-int _query, correctQuery = 0;
+int query, correctQuery = 0;
 string problemName;
-int n, query;
-int u, v, val;
 
 void generateInput();
 void compareOutput();
@@ -15,25 +13,16 @@ int main() {
     cout << "Problem's name: ";
     cin >> problemName;
     cout << "Queries: ";
-    cin >> _query;
-    for (int qq = 1; qq <= _query; qq++) {
+    cin >> query;
+    for (int qq = 1; qq <= query; qq++) {
         generateInput();
         compareOutput();
     }
-    cout << "Correct: " << correctQuery << "/" << _query << endl;
+    cout << "Correct: " << correctQuery << "/" << query << endl;
 }
 
 void generateInput() {
     ofstream fo ((problemName + ".inp").c_str());
-    int n = rand() % 100 + 1;
-    int query = rand() % 30 + 1;
-    fo << n << " " << query << endl;
-    for (int qq = 1; qq <= query; qq++) {
-        u = rand() % n + 1;
-        v = rand() % n + 1;
-        val = rand() % 500 + 1;
-        fo << u << " " << v << " " << val << endl;
-    }
     fo.close();
 }
 

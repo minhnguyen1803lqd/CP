@@ -1,0 +1,23 @@
+There are N student, stading in one line. At first they are randomly sorted. Each of them has a point, a
+teacher want to sort them into groups of k people (N div-able to k) contain first k-th lowest point and
+so on. Each time only one student can go out and get in the line with a new position. Can you point out
+the minimal numbers of time to divide the line into some group of k?
+
+-> Có n học sinh xếp thành 1 hàng, mỗi học sinh có một số điểm x. Có một giáo viên muốn chia n học sinh
+thành các nhóm, mỗi nhóm có k học sinh có k số điểm từ thấp đến cao. mỗi lần một học sinh đi ra khỏi hàng
+và vào lại hàng tại vị trí mới sẽ tốn 1 đơn vị thời gian. Hỏi cần tối thiểu bao lâu để có thể xắp xếp lại
+hàng học sinh thỏa điều kiện trên.
+
+Input: the first line contain number N and K, which is the number of student with in the line. Next line
+contain N student.
+Output: the number of change to achive the goal.
+
+-> Input: gồm 2 hàng, hàng thứ nhất chứa số N và K, là số học sinh và số lượng học sinh trong mỗi nhóm (N
+chia hết cho K). Hàng thứ 2 chứa N số là số điểm của mỗi học sinh.
+
+Example:
+input
+    6 2
+    16 2 1 7 5 10
+output
+    1

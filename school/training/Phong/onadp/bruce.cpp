@@ -11,12 +11,8 @@ using namespace std;
 
 const int inf = 1e9 + 7;
 
-ll n, a, b;
-
 int main() {
-    fileInput("onum");
+    fileInput("");
     fast;
-    cin >> n >> a >> b;
-    cout << (n - 2) * b - (n - 2) * a + 1 << endl;
     return(0);
 }
