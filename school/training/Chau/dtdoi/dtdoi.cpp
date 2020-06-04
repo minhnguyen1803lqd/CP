@@ -29,25 +29,19 @@ int main() {
     int ans = 0;
     while (m > 2 * s) m -= maxVal, ans++;
 
-    cerr << m << endl;
-
-    for (int i = 1; i <= n; i++) {
-        f[i][0] = 0;
-    }
-    for (int j = 1; j <= m; j++) {
-        f[0][j] = inf;
-    }
+    for (int i = 1; i <= n; i++) f[i][0] = 0;
+    for (int i = 0; i <= m; i++) f[0][i] = inf;
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
-            if (j < a[i]) f[i][j] = f[i - 1][j];
-            else {
+            if (a[i] > j) {
+                f[i][j] = f[i - 1][j];
+            } else {
                 f[i][j] = min(f[i - 1][j], f[i][j - a[i]] + 1);
             }
         }
     }
 
-    ans += f[n][m];
-    cout << ans << endl;
-    
+    cout << f[n][m] + ans << endl;
+
     return (0);
 }

@@ -1,0 +1,18 @@
+Với mọi màu từ 1 -> 4, ta sẽ chuyển màu đó sang dạng nhị phân rồi sau đó sử dụng các phép toán với bit và quy hoạch
+động để tính toán.
+1 -> 0001
+2 -> 0010
+3 -> 0011
+4 -> 0100
+
+OR: phép cộng không nhớ
+-> 1 OR 2 (1 | 2) = 0001 + 0010 = 0011 = 3
+-> 2 OR 4 (2 | 4) = 0010 + 0100 = 0110 = 6
+gọi a[x][y] là mày của điểm (x, y) theo dạng bit
+lưu ý: vì các điểm có tọa độ có thể âm nên ta cộng lên 200 để chuyển các tọa độ âm sang dương.
+cố định 2 hàng i, j với mọi cột k từ 0 đến 400, ta có:
+nếu ô (a[i][k], a[j][k] có màu, và ô a[i][k] != a[j][k]) {
+    c = a[i][k] + a[j][k];
+    ans += f[15 - c];
+    f[c]++;
+}

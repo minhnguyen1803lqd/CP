@@ -1,3 +1,4 @@
+//  TODO: not accepted
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -10,17 +11,20 @@ using namespace std;
 #define se second
 
 const int inf = 1e9 + 7;
+const int N = 1e4 + 7;
 
 struct point {
     int x, y;
+    void show() {
+        cout << "point: (" << x << "; " << y << ")\n";
+    }
 };
 
 int n, query;
+vector<point> a;
 
-int Q(int x, int y) {
-    for (int i = 1; i <= n; i++) {
-        
-    }
+bool cmp(point a, point b) {
+
 }
 
 int main() {
@@ -30,9 +34,11 @@ int main() {
     for (int qq = 1; qq <= query; qq++) {
         cin >> n;
         for (int i = 1; i <= n; i++) {
-            cin >> point[i].x >> point[i].y;
+            cin >> a[i].x >> a[i].y;
         }
     }
+
+    sort(a + 1, a + 1 + n, cmp);
 
     return (0);
 }

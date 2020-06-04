@@ -1,0 +1,14 @@
+Ở bài này ta sẽ dùng phương pháp dời gốc tọa độ. Cụ thể, với điểm X(x1, y1) ta sẽ dời gốc tọa độ về X, 
+sau đó, kiểm tra xem có 2 điểm nào khác màu với X thẳng hàng với X không
+
+Với 2 điểm A(xA, yA) và B(xB, yB) bất kì, ta có công thức thẳng hàng như sau:
+    xA / yA = xB / yB
+vì lí do xA / yA có thể sinh ra số thực, dẫn đến sai số, ta có thể biến đổi như sau:
+    xA * yB = yA * xB;
+
+Để tìm 2 điểm thỏa điều kiện trên, ta sẽ sắp xếp lại theo xi / yi, song vẫn vấn đề trên ta sẽ có thể gặp
+số thực. Do đó, ta có thể biến đổi như sau:
+    xA / yA < xB / yB => xA * yB < yA * xB;
+
+DPT: O(n^2 * log(n));
+

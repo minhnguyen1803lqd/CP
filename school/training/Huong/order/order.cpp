@@ -13,7 +13,7 @@ const int inf = 1e9 + 7;
 const int N = 1e4 + 7;
 
 int n, k;
-int f[N][N];
+int f[N][N], g[N][N];
 
 int main() {
     fileInput("order");
@@ -21,12 +21,18 @@ int main() {
     cin >> n >> k;
     memset(f, 0, sizeof(f));
 
+    for (int i = 1; i <= n; i++) f[i][0] = 1, g[i][0] = 1;
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= k; j++) {
-            cerr << f[i][j] << " ";
+            if (j <= i) {
+                f[i][j] = g[i - 1][j];
+                g[i][j] = g[i][j - 1] + f[i][j];
+            } else {
+                f[i][j] = g[i - 1][j] - g[i][j - i - 1];
+                g[i][j] = f[i][j] + g[i][j - 1];
+            }
         }
-        cerr << endl;
     }
-    cout << f[n][k] << endl;
+    cout << f[n][k];
     return (0);
 }

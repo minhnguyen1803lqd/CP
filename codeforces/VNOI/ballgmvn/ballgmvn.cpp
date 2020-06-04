@@ -10,17 +10,61 @@ using namespace std;
 #define se second
 
 const int inf = 1e9 + 7;
-const int N = 1e4 + 7;
+const int N = 1e3 + 7;
 
 struct point {
-    int x, y;
+    int x, y, id;
+    void show() {
+        cout << "point: (" << x << "; " << y << ")\n";
+    }
 };
 
-int n;
-point redPnt[N], bluePnt[N];
+bool operator < (const point &a, const point& b) {
+    return tie(a.x, a.y) < tie(b.x, b.y);
+}
+bool operator == (const point &a, const point& b) {
+    return a.x==b.x && a.y==b.y;
+}
 
-bool cmp(point a, point b) {
-    return (a.x * b.y < b.x * a.y);
+int n;
+point a[N], b[N];
+
+int GCD(int a, int b) {
+    if (a < 0) a = -a;
+    if (b < 0) b = -b;
+    int r;
+    while (b > 0) r=a%b, a=b, b=r;
+    return a;
+}
+
+void formalize(point &a) {
+    if (a.y == 0) a.x = 1;
+    else if (a.x == 0) a.y = 1;
+    else {
+        if (a.y < 0) a.y = -a.y, a.x = -a.x;
+        int g = GCD(a.x, a.y);
+        a.x /= g;
+        a.y /= g;
+    }
+}
+
+bool Try(point x, point a[N]) {
+    point c[N];
+    for (int i = 1; i <= n; i++) {
+        c[i].x = a[i].x - x.x;
+        c[i].y = a[i].y - x.y;
+        c[i].id = a[i].id;
+        formalize(c[i]);
+    }
+
+    sort(c + 1, c + 1 + n);
+    for (int i = 2; i <= n; i++) {
+        if (c[i] == c[i - 1]) {
+            cout << c[i].id << " " << c[i - 1].id << " " << x.id << endl;
+            return (true);
+        }
+    }
+    return (false);
 }
 
 int main() {
@@ -28,52 +72,21 @@ int main() {
     fast;
     cin >> n;
     for (int i = 1; i <= n; i++) {
-        cin >> redPnt[i].x >> redPnt[i].y;
+        cin >> a[i].x >> a[i].y;
+        a[i].id = i;
     }
     for (int i = 1; i <= n; i++) {
-        cin >> bluePnt[i].x >> bluePnt[i].y;
+        cin >> b[i].x >> b[i].y;
+        b[i].id = i + n;
     }
 
     for (int i = 1; i <= n; i++) {
-        cout << redPnt[i].x << " " << redPnt[i].y << endl;
+        if (Try(a[i], b)) return (0);
     }
     for (int i = 1; i <= n; i++) {
-        cout << bluePnt[i].x << " " << bluePnt[i].y << endl;
+        if (Try(b[i], a)) return (0);
     }
-
-    cout << endl;
-
-    for (int i = 2; i <= n; i++) {
-        redPnt[i].x -= redPnt[1].x;
-        redPnt[i].y -= redPnt[1].y;
-    }
-    redPnt[1].x = 0;
-    redPnt[1].y = 0;
-    for (int i = 2; i <= n; i++) {
-        bluePnt[i].x -= bluePnt[1].x;
-        bluePnt[i].y -= bluePnt[1].y;
-    }
-    bluePnt[1].x = 0;
-    bluePnt[1].y = 0;
-
-    for (int i = 1; i <= n; i++) {
-        cout << redPnt[i].x << " " << redPnt[i].y << endl;
-    }
-    for (int i = 1; i <= n; i++) {
-        cout << bluePnt[i].x << " " << bluePnt[i].y << endl;
-    }
-
-    sort(redPnt + 1, redPnt + 1 + n, cmp);
-    sort(bluePnt + 1, bluePnt + 1 + n, cmp);
-
-    cout << endl;
-    
-    for (int i = 1; i <= n; i++) {
-        cout << redPnt[i].x << " " << redPnt[i].y << endl;
-    }
-    for (int i = 1; i <= n; i++) {
-        cout << bluePnt[i].x << " " << bluePnt[i].y << endl;
-    }
+    cout << -1 << endl;
 
     return (0);
 }
