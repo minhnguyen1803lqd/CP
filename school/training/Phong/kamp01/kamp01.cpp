@@ -4,27 +4,43 @@ using namespace std;
 
 #define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".out").c_str(), "w", stdout);
 #define fast ios_base::sync_with_stdio(0);cin.tie(NULL);
+#define FOR(i, l, r) for (int i = l; i <= r; i++)
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define REV(i, r, l) for (int i = r; i >= l; i--)
 #define ii pair < int, int >
 #define ll long long
 #define fi first
 #define se second
+#define mp make_pair
+#define pb push_back
+#define pp pop_back
 
 const int inf = 1e9 + 7;
 const int esf = 1e-9;
 const int N = 5e5 + 7;
 
-int n, k, ans = inf;
+int n, m;
+ll ans = 0;
 vector < ii > g[N];
-int color[N], parent[N];
-int infected[N];
+int parent[N], a[N], color[N];
+int cost[N];
 
-void DFS(int u) {
-    color[u] = 1;
-    for (int i = 0; i < g[u].size(); i++) {
-        int v = g[u][i].fi;
-        if (!color[v]) {
-            parent[v] = u;
-            DFS(v);
+void BFS(int source) {
+    memset(parent, 0, sizeof(parent));
+    queue < int > q;
+    q.push(source);
+    parent[source] = -1;
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        REP(i, g[u].size()) {
+            int v = g[u][i].fi;
+            int w = g[u][i].se;
+            if (!parent[v]) {
+                q.push(v);
+                parent[v] = u;
+                cost[v] = w;
+            }
         }
     }
 }
@@ -32,36 +48,27 @@ void DFS(int u) {
 int main() {
     fileInput("kamp01");
     fast;
-    cin >> n >> k;
-    for (int i =1 ; i <= n - 1; i++) {
+    cin >> n >> m;
+    FOR(i, 1, n - 1) {
         int u, v, w;
         cin >> u >> v >> w;
-        g[u].push_back(make_pair(v, w));
-        g[v].push_back(make_pair(u, w));
+        g[u].pb(ii(v, w));
+        g[v].pb(ii(u, w));
     }
-    for (int i = 1; i <= k; i++) {
-        cin >> infected[i];
+    FOR(i, 1, m) {
+        cin >> a[i];
     }
 
-    for (int source = 1; source <= n; source++) {
-        memset(color, 0, sizeof(color));
-        memset(parent, 0, sizeof(parent));
-        parent[source] = -1;
-        DFS(source);
-        int tmp = 0;
-        for (int h = 1; h <= k; h++) {
-            int v = infected[h];
-            while (v != source) {
-                int u = parent[v];
-                for (int i = 0; i < g[u].size(); i++) {
-                    if (g[u][i].fi == v) {
-                        tmp += g[u][i].se;
-                    }
-                }
-                v = parent[v];
-            }
+    memset(color, 0, sizeof(color));
+    BFS(a[1]);
+    color[a[1]] = 1;
+    FOR(sink, 2, m) {
+        int v = a[sink];
+        while (!color[v] and v != a[1]) {
+            ans += cost[v];
+            color[v] = 1;
+            v = parent[v];
         }
-        ans = min(ans, tmp);
     }
     cout << ans << endl;
 

@@ -17,7 +17,8 @@ using namespace std;
 
 const int inf = 1e9 + 7;
 const int esf = 1e-9;
-const int N = 1e5 + 7;
+const int N = 1e3 + 7;
+
 struct bipartiteGraph {
     int nX, nY, e; //  nX == number of nodes in X, nY == number of nodes in Y
     int parent[N];
@@ -25,10 +26,9 @@ struct bipartiteGraph {
     vector < int > g[N];
 
     void initGraph() {
-        cin >> nX >> nY >> e;
-        FOR(i, 1, e) {
-            int u, v;
-            cin >> u >> v;
+        cin >> nX >> nY;
+        int u, v;
+        while (cin >> u >> v) {
             g[u].pb(v);
         }
     }
@@ -72,22 +72,26 @@ struct bipartiteGraph {
                 f = _y;
             } while (f);
         }
-        int ans = 0;
-        FOR(u, 1, nX) {
-            if (mX[u]) {
-                ans++;
+        vector < ii > ans;
+        FOR(i, 1, nX) {
+            if (mX[i]) {
+                ans.pb(ii(i, mX[i]));
             }
         }
-        return (ans);
+        cout << ans.size() << endl;
+        REP(i, ans.size()) {
+            cout << ans[i].fi << " " << ans[i].se << endl;
+        }
+        return (ans.size());
     }
 };
 
-bipartiteGraph graph; 
+bipartiteGraph graph;
 
 int main() {
-    fileInput("nkbm");
+    fileInput("matching");
     fast;
     graph.initGraph();
-    cout << graph.maxMatching() << endl;
+    graph.maxMatching();
     return (0);
 }
