@@ -1,0 +1,3 @@
+Cho 2 đống đá có số lượng lần lượt là n và m. Có 2 người chơi, luật chơi như sau: mỗi lượt người chơi sẽ bốc
+một trong 2 đống đá và bỏ đi, lấy đống đá còn lại chia thành 2 nửa sao cho mỗi nửa có ít nhất 1 viên đá. người
+không chia được nữa là người thua cuộc.

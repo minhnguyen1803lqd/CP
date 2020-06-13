@@ -1,0 +1,2 @@
+Có một chồng đá gồm n viên, có 2 người chơi. Luật chơi như sau, ở mỗi lượt của mình, người chơi sẽ lấy từ 1 đến
+m viên đá từ chồng đá và bỏ đi. Người bốc hết số đá cuối cùng là người chiến thắng.

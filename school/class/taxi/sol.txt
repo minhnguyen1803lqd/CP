@@ -1,0 +1,4 @@
+taxi, người
+1 taxi -> 1 người
+1 người -> 1 taxi
+

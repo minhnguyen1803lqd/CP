@@ -19,7 +19,7 @@ const int inf = 1e9 + 7;
 const int esf = 1e-9;
 const int N = 1e4 + 7;
 
-int n, m, source, sink;
+int n, m, source, sink, k;
 vector < ii > g[N];
 int flow[N][N];
 int level[N];
@@ -29,7 +29,7 @@ bool BFS(int source, int sink) {
     queue < int > q;
     q.push(source);
     level[source] = 1;
-    
+
     while (!q.empty()) {
         int u = q.front();
         q.pop();
@@ -64,12 +64,12 @@ int DFS(int u, int sink, int maxFlow) {
 }
 
 int main() {
-    fileInput("Dinic");
+    fileInput("mincost");
     fast;
-    cin >> n >> m >> source >> sink;
+    cin >> n >> m >> k >> source >> sink;
     FOR(i, 1, m) {
-        int u, v, c;
-        cin >> u >> v >> c;
+        int u, v, c, w;
+        cin >> u >> v >> c >> w;
         g[u].pb(ii(v, c));
         g[v].pb(ii(u, 0));
     }
