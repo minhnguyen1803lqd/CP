@@ -1,0 +1,206 @@
+n, m: 0 0
+0
+n, m: 1 0
+0
+n, m: 3 3
+source, sink: 0 2
+maxFlow: 1
+source, sink: 0 3
+maxFlow: 1
+source, sink: 0 4
+maxFlow: 1
+source, sink: 0 5
+maxFlow: 1
+source, sink: 1 3
+maxFlow: 1
+source, sink: 1 4
+maxFlow: 100008
+source, sink: 1 5
+maxFlow: 1
+source, sink: 2 0
+maxFlow: 1
+source, sink: 2 4
+maxFlow: 1
+source, sink: 2 5
+maxFlow: 1
+source, sink: 3 0
+maxFlow: 100008
+source, sink: 3 1
+maxFlow: 1
+source, sink: 3 5
+maxFlow: 1
+source, sink: 4 0
+maxFlow: 1
+source, sink: 4 1
+maxFlow: 1
+source, sink: 4 2
+maxFlow: 1
+source, sink: 5 0
+maxFlow: 100008
+source, sink: 5 1
+maxFlow: 1
+source, sink: 5 2
+maxFlow: 100008
+source, sink: 5 3
+maxFlow: 1
+100008
+n, m: 2 0
+source, sink: 0 2
+maxFlow: 0
+source, sink: 0 3
+maxFlow: 0
+source, sink: 1 3
+maxFlow: 0
+source, sink: 2 0
+maxFlow: 0
+source, sink: 3 0
+maxFlow: 0
+source, sink: 3 1
+maxFlow: 0
+0
+n, m: 5 7
+source, sink: 0 2
+maxFlow: 1
+source, sink: 0 3
+maxFlow: 1
+source, sink: 0 4
+maxFlow: 1
+source, sink: 0 5
+maxFlow: 1
+source, sink: 0 6
+maxFlow: 1
+source, sink: 0 7
+maxFlow: 1
+source, sink: 0 8
+maxFlow: 1
+source, sink: 0 9
+maxFlow: 1
+source, sink: 1 3
+maxFlow: 1
+source, sink: 1 4
+maxFlow: 100008
+source, sink: 1 5
+maxFlow: 1
+source, sink: 1 6
+maxFlow: 2
+source, sink: 1 7
+maxFlow: 1
+source, sink: 1 8
+maxFlow: 2
+source, sink: 1 9
+maxFlow: 1
+source, sink: 2 0
+maxFlow: 1
+source, sink: 2 4
+maxFlow: 1
+source, sink: 2 5
+maxFlow: 1
+source, sink: 2 6
+maxFlow: 1
+source, sink: 2 7
+maxFlow: 1
+source, sink: 2 8
+maxFlow: 1
+source, sink: 2 9
+maxFlow: 1
+source, sink: 3 0
+maxFlow: 100008
+source, sink: 3 1
+maxFlow: 1
+source, sink: 3 5
+maxFlow: 1
+source, sink: 3 6
+maxFlow: 100009
+source, sink: 3 7
+maxFlow: 1
+source, sink: 3 8
+maxFlow: 100008
+source, sink: 3 9
+maxFlow: 1
+source, sink: 4 0
+maxFlow: 1
+source, sink: 4 1
+maxFlow: 1
+source, sink: 4 2
+maxFlow: 1
+source, sink: 4 6
+maxFlow: 1
+source, sink: 4 7
+maxFlow: 1
+source, sink: 4 8
+maxFlow: 1
+source, sink: 4 9
+maxFlow: 1
+source, sink: 5 0
+maxFlow: 100008
+source, sink: 5 1
+maxFlow: 1
+source, sink: 5 2
+maxFlow: 100009
+source, sink: 5 3
+maxFlow: 1
+source, sink: 5 7
+maxFlow: 1
+source, sink: 5 8
+maxFlow: 2
+source, sink: 5 9
+maxFlow: 1
+source, sink: 6 0
+maxFlow: 1
+source, sink: 6 1
+maxFlow: 1
+source, sink: 6 2
+maxFlow: 1
+source, sink: 6 3
+maxFlow: 1
+source, sink: 6 4
+maxFlow: 1
+source, sink: 6 8
+maxFlow: 1
+source, sink: 6 9
+maxFlow: 1
+source, sink: 7 0
+maxFlow: 2
+source, sink: 7 1
+maxFlow: 1
+source, sink: 7 2
+maxFlow: 100009
+source, sink: 7 3
+maxFlow: 1
+source, sink: 7 4
+maxFlow: 100008
+source, sink: 7 5
+maxFlow: 1
+source, sink: 7 9
+maxFlow: 1
+source, sink: 8 0
+maxFlow: 1
+source, sink: 8 1
+maxFlow: 1
+source, sink: 8 2
+maxFlow: 1
+source, sink: 8 3
+maxFlow: 1
+source, sink: 8 4
+maxFlow: 1
+source, sink: 8 5
+maxFlow: 1
+source, sink: 8 6
+maxFlow: 1
+source, sink: 9 0
+maxFlow: 2
+source, sink: 9 1
+maxFlow: 1
+source, sink: 9 2
+maxFlow: 100008
+source, sink: 9 3
+maxFlow: 1
+source, sink: 9 4
+maxFlow: 2
+source, sink: 9 5
+maxFlow: 1
+source, sink: 9 6
+maxFlow: 100008
+source, sink: 9 7
+maxFlow: 1
+100009
