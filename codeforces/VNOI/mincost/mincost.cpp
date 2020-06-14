@@ -63,6 +63,14 @@ int DFS(int u, int sink, int maxFlow) {
     return (0);
 }
 
+void dfs(int u) {
+    color[u] = 1;
+    REP(i, g[u].size()) {
+        int v = g[u][i].fi;
+        int cap = g[u][i].se;
+    }
+}
+
 int main() {
     fileInput("mincost");
     fast;
