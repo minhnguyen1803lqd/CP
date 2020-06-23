@@ -1,0 +1,6 @@
+Giả sử f(i) là độ dài dãy con tăng đơn điệu dài nhất với a[i] là phần tử cuối
+Suy ra, kết quả bài toán (ans) = max(f(i)) với i tăng từ 1 đến n
+Ta thấy, khi dãy có 1 phần tử, f(1) = 1
+Suy ra, khi dãy có n phần tử, f(i) được tính như sau: 
+- Nếu a[i] > a[j] (phần tử sau lớn hơn phần tử trước) thì f(i) = max(f(i), f(j) + 1)
+- Ngược lại, f(i) = 1

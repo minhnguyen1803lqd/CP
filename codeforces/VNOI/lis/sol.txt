@@ -1,0 +1,7 @@
+Gọi f(i) là giá trị cuối của dãy con tăng có độ dài i
+vd hiện tại có dãy con tăng độ dài 5 là 3 6 9 10 31 thì f(5) = 31
+Chứng minh được f() là một dãy tăng. Do đó, ta tìm kiếm nhị phân ở trên f()
+Khởi tạo f() = +inf, f(0) = -inf
+Với mọi i từ 1 đến n, ta tìm vị trí k đầu tiên có f(k) >= a[i]
+-> f(k) = a[i]
+-> g(i) = k //  g(): độ dài dãy con tăng dài nhất với a[i] là phần tử cuối

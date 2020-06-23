@@ -1,0 +1,5 @@
+Gọi f(i) là độ dài đoạn dây cần nối từ máy 1 -> máy i
+Ta có: f(0) = máy 1 -> máy 0 = 0
+       f(1) = máy 1 -> máy 1 = inf
+       f(i) = máy 1 -> máy i = min(f[i - 1], f[i - 2]) + a[i];
+       với (a[i]: khoảng cách từ máy i - 1 đến máy i)

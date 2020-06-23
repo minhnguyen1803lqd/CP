@@ -1,0 +1,4 @@
+gọi f(i, j) là cạnh của ô vuông lớn nhất với ô a[i][j] là đáy.
+-> ta thấy rằng nếu các ô a[i][j] == a[i - 1][j - 1] == a[i - 1][j] == a[i][j - 1] thì sẽ tạo được 1 hình
+   vuông mới với cạnh = min(a[i - 1][j - 1], a[i][j - 1], a[i - 1][j]) + 1;
+   Ngược lại sẽ tạo được 1 ô vuông cạnh bằng 1

@@ -1,0 +1,6 @@
+Code này mình dựa trên code của anh Nguyễn Tiến Trung Kiên, được test và chỉnh
+sửa bới anh Lê Duy Thức vào ngày 19/5/2020
+
+Ý tưởng: xử lí số lớn sử dụng vector
+Các operator: +, -, *, /, %, >>, <<, <
+

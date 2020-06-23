@@ -1,0 +1,2 @@
+Số các lát gạch là số fibo thứ i
+Lưu ý, bài này xử lí số lớn

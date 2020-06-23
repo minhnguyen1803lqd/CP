@@ -1,0 +1,5 @@
+Gọi f(i) là thời gian ngắn nhất người thứ i mua hàng.
+Như vậy thời gian phục vụ ngắn nhất là tổng f(i) với i từ 1 đến n.
+Giả sử hàng chỉ có 1 người (n = 1) => f(1) = t[1]
+       hàng có 2 người: f(2) = max(f(1) + a[2], r[1])
+       suy ra f(i) = max(f(i - 1) + t[i], f(i - 2) + r[i]);
