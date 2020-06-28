@@ -1,0 +1,11 @@
+Ta thấy rằng thứ tự xuất hiện của xâu S bậc k sẽ phải giống như thứ tự xuất hiện của dãy con trong X.
+Do đó, một phép duyệt tuyến tính sẽ dễ dàng tìm ra xâu con dài nhất.
+Sau khi tìm được, xâu con đó phải có độ dài là bội của S
+Vd:
+S = Giang
+X = SongGiangkhongdepbangNguyenHuongGiang
+=> 2
+
+S = Minh
+X = AnhBinhMinhTrenbaibienmauxanhmint
+=> 1

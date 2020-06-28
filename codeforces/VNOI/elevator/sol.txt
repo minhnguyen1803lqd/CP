@@ -1,0 +1,5 @@
+Sắp xếp tăng dần theo mảng A
+Gọi f(i) là khả năng xây được chiều cao i, f(i) = true/false;
+với i = 0, f(0) = true;
+ngược lại: f(i) = f(i) or f(i - h[j] * k);
+h[j] là khối lượng đang xét và số lượng là k

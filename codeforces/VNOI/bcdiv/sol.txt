@@ -1,0 +1,7 @@
+Gọi f(i, j) là số cách chia i phần tử vào j nhóm.
+Ta có 2 trường hợp: 
+- a[i] thuộc một nhóm độc lập -> ta chia i - 1 phần tử còn lại vào j - 1 nhóm
+    -> f[i][j] = f[i - 1][j - 1]
+- a[i] thuộc một nhóm khác -> chia i - 1 phần tử còn lại vào j nhóm rồi cho a[i] vào j nhóm đó 
+    -> f[i][j] = f[i - 1][j] * j;
+Bài toán gốc: khi có 0 phần tử, chia vào 0 nhóm thì có 1 cách

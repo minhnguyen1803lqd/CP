@@ -1,0 +1,6 @@
+Gọi f(i, j) là số tờ tiền cần đổi ít nhất khi có i mệnh giá đầu tiên và số tiền cần đổi là j
+Dễ nhận thấy là j quá lớn, do đó ta cần có nhận xét như sau:
+Bởi lí do j quá lớn và a[i] có giá trị khá nhỏ so với j, ta có thể tìm max(a[]) = maxVal, sau đó giảm s xuống
+một khoảng nào đó, ở code mình chọn 2*sum(a[]). Mỗi lần giảm, mình cộng ans lên 1 bởi lúc này mình đã thực hiện
+việc chọn 1 tờ tiền rồi.
+Sau đó ta có thể áp dụng DP để tính toán phần còn lại của s với độ phức tạp là O(n.m)

@@ -1,0 +1,6 @@
+Có người bảo xài mảng hằng là AC. Nhưng mình sẽ hướng dẫn cho các bạn sử dụng quy hoạch động. 
+(Bởi vì mình cũng không biết lấy mảng hằng ở đâu ra)
+
+Tất cả các mối quan hệ đều có thể đưa được về dạng (a1 = a2 = … ) < (a_i-1 = a_i) < …. Vậy nên chúng sẽ for số 
+dấu “<”, với số dấu này chúng ta cần tìm ra tất cả các cách đặt dấu, với mỗi cách đặt dấu thì chúng ta cần xem 
+có bao nhiêu cách đặt số thỏa mãn. Kết quả là tất cả số cách bạn tìm được . (Chi tiết cụ thể ở trên code)
