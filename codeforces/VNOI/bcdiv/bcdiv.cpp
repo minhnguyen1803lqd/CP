@@ -20,19 +20,21 @@ const int inf = 1e9 + 7;
 const int esf = 1e-9;
 const int N = 1e2 + 7;
 
-int query;
+ll query;
 ll f[N][N];
 
 int main() {
     fileInput("bcdiv");
     fast;
-    f[0][0] = 1ll;
     FOR(i, 1, 25) {
+        f[i][1] = 1;
+    }
+    FOR(i, 2, 25) {
         FOR(j, 1, 25) {
-            f[i][j] = f[i - 1][j - 1] + j * f[i - 1][j];
+            f[i][j] = f[i - 1][j - 1] + f[i - 1][j] * j;
         }
     }
-    scanf("%d", &query);
+    scanf("%lld", &query);
     FOR(qq, 1, query) {
         int n, k;
         scanf("%d%d", &n, &k);
@@ -40,3 +42,13 @@ int main() {
     }
     return (0);
 }
+
+/*
+ * gọi f(i, j) là số cách chia n người thành k nhóm, mõi nhóm ít nhất 1 người
+ * nhận xét: có 2 trường hợp lớn:
+ * + chia người thử i vào 1 nhóm riêng và n - 1 người còn lại vào k - 1 nhóm
+ * => f(i, j) = f[i - 1][j - 1] + 1;
+ * + chia i - 1 người còn lại thành j nhóm và xếp người thứ i vào j nhóm đó => có j cách chia
+ * => f(i, j) = f[i - 1][j] * j
+ * bài toán con: i người chia thành 1 nhóm thì có 1 cách.
+ */

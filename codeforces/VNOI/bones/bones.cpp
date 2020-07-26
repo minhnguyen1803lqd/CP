@@ -30,19 +30,17 @@ int main() {
     FOR(i, 1, n1) {
         FOR(j, 1, n2) {
             FOR(k, 1, n3) {
-                int s = i + j + k;
-                //cout << "s: " << s << endl;
-                cnt[s]++;
+                cnt[i + j + k]++;
             }
         }
     }
-    int ans = 0;
-    cnt[0] = -inf;
+    int id = 0;
+    cnt[0] = 0;
     FOR(i, 3, n1 + n2 + n3) {
-        if (cnt[ans] < cnt[i]) {
-            ans = i;
+        if (cnt[id] < cnt[i]) {
+            id = i;
         }
     }
-    cout << ans << endl;
+    cout << id << endl;
     return (0);
 }

@@ -1,0 +1,7 @@
+Gọi f(i, j) là tổng khối lượng cái túi nhỏ nhất khi lấy i đồ vật đầu tiên và tổng giá trị của các đồ vật được
+lấy đúng bằng j.
+Như vậy ta cần phải sắp xếp lại theo gái trị từ lớn đến bé để tính toán chính xác.
+f(i, j) = inf với mọi i từ 1 đến n và j từ 1 đến sum(các val[i])
+f(i, 0) = 0;
+nếu j >= val[i] thì f(i, j) = min(f(i - 1, j), f(i - 1, j - val[i]) = weight[i])
+ngược lại f(i, j) = f(i - 1, j)

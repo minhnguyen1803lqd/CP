@@ -1,0 +1,4 @@
+gọi f(i, j) là tổng điểm hạnh phúc lớn nhất khi đây là ngày i và Taro quyết định làm việc thứ j
+nếu j = 1 => f[i][1] = max(f[i - 1][2], f[i - 1][3]) + a[i][1]
+nếu j = 2 => f[i][2] = max(f[i - 1][1], f[i - 1][3]) + a[i][2]
+nếu j = 3 => f[i][3] = max(f[i - 1][1], f[i - 1][2]) + a[i][3]

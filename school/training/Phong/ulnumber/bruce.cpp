@@ -1,18 +1,31 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+set <int> s;
+int n;
+void bfs(int u, int v)
+{
+    set <int> tmp;
+    queue <int> q;
+    q.push(u);q.push(v);
+    tmp.insert(0);
+    s.insert(0);
+    while (!q.empty())
+    {
+        long long x=q.front();q.pop();
+        cout<<x<<"\n";
+        if(x*10+u<=n and tmp.find(x*10+u)==tmp.end() ) { s.insert(x*10+u); tmp.insert(x*10+u); q.push(x*10+u);};
+        if(x*10+v<=n and tmp.find(x*10+v)==tmp.end() ) { s.insert(x*10+v); tmp.insert(x*10+v); q.push(x*10+v);};
 
-#define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".ans").c_str(), "w", stdout);
-#define fast ios_base::sync_with_stdio(0);cin.tie(NULL);
-#define ii pair < int, int >
-#define ll long long
-#define fi first
-#define se second
-
-const int inf = 1e9 + 7;
-
-int main() {
-    fileInput("");
-    fast;
-    return(0);
+    }
+}
+int main()
+{
+    freopen ("ulnumber.inp", "r", stdin);
+    freopen ("ulnumber.ans", "w", stdout);
+    cin>>n;
+    for(int i=0;i<9;i++)
+        for(int j=i+1;j<=9;j++)
+        bfs(i,j);
+    cout<<s.size()-1;
+    return 0;
 }

@@ -1,0 +1,24 @@
+LAKES IN BERLAND (LAKES.*)
+Bản đồ của vùng Berland có kích thước nxm, trong đó mỗi ô vuông đơn vị 1x1 là 1 trong 2 địa hình đất hoặc nước.
+Một vùng trên bản đồ được gọi là hồ khi nó là tập hợp các ô thỏa mãn các điều kiện:
+1. Các ô đều là nước
+2. Có thể di chuyển giữa hai ô bất kỳ trong hồ biết rằng từ 1 ô chỉ đi đến tối đa 4 ô chung cạnh với nó và các 
+   ô đều phải là nước.
+3. Không có ô nào nằm trên cạnh của bản đồ.
+Nhiệm vụ của bạn là chọn ra ít nhất các ô nước để đổ đầy đất sao cho số lượng hồ còn lại đúng bằng k, biết rằng 
+số lượng hồ trong bản đồ ban đầu không nhỏ hơn k.
+Dữ liệu vào:
++ Dòng đầu tiên chứa 3 số nguyên dương n,m,k
++ n dòng tiếp theo, mỗi dòng chứa m ký tự, mỗi ký tự tượng trưng cho một ô trong bản đồ, nếu ký tự là ‘.’ thì ô 
+đó là nước, nếu kỳ tự là ‘*’ thì ô đó là đất.
+Giới hạn:
+1≤n,m≤50;0≤k≤50
+Kết quả:
++ Số nguyên duy nhất cho biết số lượng ít nhất các ô cần phải chuyển từ nước thành đất.
+Ví dụ:
+5 4 1
+****
+*..*
+**** ==> 1
+**.*
+..**

@@ -1,0 +1,14 @@
+Cho số thực P (1 <= P <= 5).
+Cho 1 cái túi chứa rất nhiều mẩu giấy chứa các số từ 1 -> 5 (nguyên).
+Yêu cầu: Hãy tìm số mảnh giấy ít nhất sao cho TBC có giá trị bằng P.
+vd: P = 5
+    => 1
+    P = 4.5
+    => 2
+Chú ý: phần thập phân của P dài tối đa 9 chữ số.
+vd: 1.23456789
+
+Cho n điểm trong 1 mặt phẳng Oxy
+Đếm số lượng tam giác vuông tạo ra từ 3 điểm bất kì.
+- Sao cho các cạnh góc vuông song song với 2 trục tọa độ. (n <= 3000)
+- Tam giác vuông bất kì. (n <= 1500)

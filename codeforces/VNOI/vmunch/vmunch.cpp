@@ -7,6 +7,8 @@ using namespace std;
 #define FOR(i, l, r) for (int i = l; i <= r; i++)
 #define REP(i, n) for (int i = 0; i < n; i++)
 #define REV(i, r, l) for (int i = r; i >= l; i--)
+#define SET(x, val) memset(x, val, sizeof(x))
+#define vi vector < int >
 #define ii pair < int, int >
 #define ll long long
 #define fi first
@@ -17,26 +19,35 @@ using namespace std;
 
 const int inf = 1e9 + 7;
 const int esf = 1e-9;
-const int N = 1e4 + 7;
+const int N = 1e2 + 7;
 
 int n, m;
-int dx[4] = {0, 0, -1, 1};
-int dy[4] = {-1, 1, 0, 0};
+int color[N][N], dis[N][N];
+ii startNode, endNode;
+int dx[] = {0, 0, -1, 1};
+int dy[] = {-1, 1, 0, 0};
 
-void BFS(ii source) {
+void BFS(ii startNode, ii endNode) {
     queue < ii > q;
-    int color[N][N];
-    memset(color, 0, sizeof(color));
-    q.push(source);
+    q.push(startNode);
+    color[startNode.fi][startNode.se] = 1;
+    dis[startNode.fi][startNode.se] = 0;
+
     while (!q.empty()) {
         ii u = q.front();
+        cerr << u.fi << " " << u.se << endl;
         q.pop();
         REP(k, 4) {
-            if (!color[u.fi + dx[k]][u.se + dy[k]]) {
-                
+            int x = u.fi + dx[k];
+            int y = u.se + dy[k];
+            if (1 <= x and x <= n and 1 <= y and y <= m and !color[x][y]) {
+                q.push(mp(x, y));
+                color[x][y] = 1;
+                dis[x][y] = dis[u.fi][u.se] + 1;
             }
         }
     }
+    cout << dis[endNode.fi][endNode.se] << endl;
 }
 
 int main() {
@@ -45,13 +56,13 @@ int main() {
     cin >> n >> m;
     FOR(i, 1, n) {
         FOR(j, 1, m) {
-            chat tmp;
-            cin >> tmp;
-            if (tmp == 'B') source = ii(i, j);
-            if (tmp == 'C') sink = ii(i, j);
-            if (tmp == '*') color[i][j] = 1;
+            char type;
+            cin >> type;
+            if (type == 'B') startNode = mp(i, j);
+            if (type == 'C') endNode = mp(i, j);
+            if (type == '*') color[i][j] = 1;
         }
     }
-    BFS(source);
+    BFS(startNode, endNode);
     return (0);
 }

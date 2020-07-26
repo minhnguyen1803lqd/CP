@@ -1,0 +1,4 @@
+gọi f(i) là chi phí ít nhất để đi đến ô thứ i
+=> f(1) = 0 vì chú ếch luôn xuất phát ở ô 1
+=> f(2) = abs(a[2] - a[1]) vì để đến được ô thứ 2 chỉ có duy nhất 1 cách là nhảy lên 1 ô từ ô số 1
+vậy f(i) = min(f[i - 1] + abs(a[i] - a[i - 1]), f[i - 2] + abs(a[i] - a[i - 2]));

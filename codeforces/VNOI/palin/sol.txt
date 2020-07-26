@@ -1,0 +1,27 @@
+https://www.quora.com/What-is-the-logical-way-to-solve-the-SPOJ-problem-Palin
+
+Approach the problem as follows : First convert the number to a palindrome. Then if needed incrementally 
+increase the number to get a larger palindrome.
+Input : 87654
+Now to make this number a palindrome, let's copy the first half into the second half.
+New number : 87678.
+Now this number is the next largest palindrome of 87654.
+In this case all the numbers in the first half were greater than the numbers in the second half, so no more 
+processing was required.
+Now take the case of number : 1234.
+To make this number palindrome again copy the first half into the second half.
+New number : 1221.
+Now this is less than our original number. The trick here is that, to get the next largest palindrome, we 
+incrementally increase the number starting from the middle and propagate to the beginning and end respectively
+until we get a number larger than the original. Since we want the next largest, we simply add 1.
+Doing so , gives us : 1331, which is the next palindrome.
+We do however have a special case here if the middle digit(s) is 9, in which case we replace the 9 with 0 and
+carry 1 for the rest of the digits until we either reach a digit which is less than 9 or we reach the 
+beginning/end.
+If we reach a digit which is less than 9 , we add 1 to it and its mirror digit.(as we converted the number to a 
+palindrome)
+For example : 19995->19991->20002
+If we reach the beginning/end.(which means that all the digits were 9 ) , we append 1 to the beginning and make 
+the last digit also 1.
+9999->10000->10001.
+

@@ -1,0 +1,6 @@
+Quy tắc nhân: 
+1 công việc được chia ra nhiều giai đoạn. Mỗi giai đoạn có k[i] cách làm (nhưng chưa hoàn thành công việc)
+=> số cách: tích các k[i];
+Quy tắc cộng:
+1 công việc có k[i] cách làm (đã hoàn thành công việc)
+=> số cách: tổng các k[i];

@@ -21,6 +21,20 @@ const int esf = 1e-9;
 int main() {
     fileInput("grading_students");
     fast;
-    
+    int n;
+    cin >> n;
+    FOR(i, 1, n) {
+        int x, tmp;
+        cin >> x;
+        if (x < 38) {
+            cout << x << endl;
+        } else {
+            tmp = 0;
+            while (tmp < x) tmp += 5;
+            if (tmp - x < 3) x = tmp;
+            cout << x << endl;
+        }
+    }    
+
     return (0);
 }

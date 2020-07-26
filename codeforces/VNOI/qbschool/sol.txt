@@ -1,0 +1,3 @@
+Sử dụng dijkstra bình thường, ở bước co d[], gọi f[i] là số đường đi ngắn 
+nhất từ 1 đến i. Nếu d[v] == d[u] + w(u, v) => f[v] += f[u] ngược lại nếu 
+d[v] > d[u] + w(u, v) => f[v] = f[u];

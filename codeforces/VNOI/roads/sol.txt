@@ -1,0 +1,7 @@
+Giải thuật:
+Ta sử dụng dijkstra để giải bài toán này. Thay vì ưu tiên đoạn đường ngắn nhất 
+thì chúng ta hãy ưu tiên đường nào phải chi trả ít tiền nhất. Gọi cost là chi 
+phí hiện tại khi đi đến u, và c là chi phí đi từ u -> v,  thì ta chỉ đi từ 
+u -> v khi cost + c <= k,  sau đó ta đưa thông tin của đoạn đường đến v vào hàng
+đợi ưu tiên. Việc cập nhật đoạn đường ta chỉ cần cập nhật ngay khi so sánh 
+d[u] hiện tại với quãng đường khi ta xét tới u.
