@@ -1,10 +1,3 @@
-/*
-	?	:
-	!	:
-	TODO:
- */
-
-
 #include <bits/stdc++.h>
 
 
