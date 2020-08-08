@@ -2,63 +2,34 @@
 
 using namespace std;
 
-const int inf = 1e9 + 7;
-const int N = 1e4 + 7;
+#define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".out").c_str(), "w", stdout);
+#define ll long long
+#define ii pair < int, int >
+#define iii pair < int, ii >
+#define fi first
+#define se second
 
-struct node {
-    int v, w, c;
-    node(int _v, int _w, int _c) {
-        v = _v;
-        c = _c;
-        w = _w;
-    }
-};
+const ll inf = 1e9 + 7;
+const ll MOD = 1e9 + 7;
+const ll N = 1e3 + 7;
 
-int query, n, m, k;
-vector < node > adj[N];
-int d[N];
+int k, n, m;
+vector < iii > adj[N];
 
-bool operator > (node a, node b) {
-    return (a.c > b.c);
-}
-
-int dijkstra() {
-    priority_queue < node, vector < node >, greater < node > > pq;
-    pq.push(node(1, 0, 0));
-    for (int i = 1; i <= n; i++) d[i] = inf;
-
-    while (!pq.empty()) {
-        int u = pq.top().v, l = pq.top().w, cost = pq.top().c;
-        pq.pop();
-        if (l >= d[u]) continue;
-        d[u] = l;
-        for (int i = 0; i < adj[u].size(); i++) {
-            int v = adj[u][i].v, w = adj[u][i].w, c = adj[u][i].c;
-            if (cost + c > k) continue;
-            pq.push(node(v, l + w, cost + c));
-        }
-    }
-    if (d[n] == inf) return (-1);
-    return (d[n]);
+void dijsktra() {
+    
 }
 
 main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie();
-    cout.tie();
-    freopen ("roads.inp", "r", stdin);
-    freopen ("roads.out", "w", stdout);
-    
+    fileInput("roads");
+    int query = 0;
     cin >> query;
-    for (int qq = 1; qq <= query; qq++) {
+    while (query--) {
         cin >> k >> n >> m;
-        for (int i = 1; i <= n; i++) adj[i].clear();
-        for (int i = 1; i <= m; i++) {
+        for (int i = 1; i <= m; ++i) {
             int u, v, w, c;
             cin >> u >> v >> w >> c;
-            adj[u].push_back(node(v, w, c));
+            adj[u].push_back(make_pair(v, make_pair(w, c)));
         }
-        int res = dijkstra();
-        cout << res << endl;
     }
 }

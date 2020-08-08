@@ -2,27 +2,63 @@
 
 using namespace std;
 
-#define fileInput(problemName) freopen ((string(problemName) + ".inp").c_str(), "r", stdin);freopen ((string(problemName) + ".ans").c_str(), "w", stdout);
-#define fast ios_base::sync_with_stdio(0);cin.tie(NULL);
-#define FOR(i, l, r) for (int i = l; i <= r; i++)
-#define REP(i, n) for (int i = 0; i < n; i++)
-#define REV(i, r, l) for (int i = r; i >= l; i--)
-#define SET(x, val) memset(x, val, sizeof(x))
-#define vi vector < int >
-#define ii pair < int, int >
-#define ll long long
-#define fi first
-#define se second
-#define mp make_pair
-#define pb push_back
-#define pp pop_back
-
 const int inf = 1e9 + 7;
-const int esf = 1e-9;
 const int N = 1e4 + 7;
 
-int main() {
-    fileInput("");
-    fast;
-    return (0);
+struct node {
+    int v, w, c;
+    node(int _v, int _w, int _c) {
+        v = _v;
+        c = _c;
+        w = _w;
+    }
+};
+
+int query, n, m, k;
+vector < node > adj[N];
+int d[N];
+
+bool operator > (node a, node b) {
+    return (a.c > b.c);
+}
+
+int dijkstra() {
+    priority_queue < node, vector < node >, greater < node > > pq;
+    pq.push(node(1, 0, 0));
+    for (int i = 1; i <= n; i++) d[i] = inf;
+
+    while (!pq.empty()) {
+        int u = pq.top().v, l = pq.top().w, cost = pq.top().c;
+        pq.pop();
+        if (l >= d[u]) continue;
+        d[u] = l;
+        for (int i = 0; i < adj[u].size(); i++) {
+            int v = adj[u][i].v, w = adj[u][i].w, c = adj[u][i].c;
+            if (cost + c > k) continue;
+            pq.push(node(v, l + w, cost + c));
+        }
+    }
+    if (d[n] == inf) return (-1);
+    return (d[n]);
+}
+
+main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie();
+    cout.tie();
+    freopen ("roads.inp", "r", stdin);
+    freopen ("roads.ans", "w", stdout);
+    
+    cin >> query;
+    for (int qq = 1; qq <= query; qq++) {
+        cin >> k >> n >> m;
+        for (int i = 1; i <= n; i++) adj[i].clear();
+        for (int i = 1; i <= m; i++) {
+            int u, v, w, c;
+            cin >> u >> v >> w >> c;
+            adj[u].push_back(node(v, w, c));
+        }
+        int res = dijkstra();
+        cout << res << endl;
+    }
 }

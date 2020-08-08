@@ -1,0 +1,6 @@
+s[i] = a[1] + a[2] + a[3] + ... + a[i]
+
+Để vị trí i là một vị trí tốt cần thỏa điều kiện:
+
+- s[i - 1] < s[k] với mọi k >= i;
+- s[i - 1] < s[n] + s[k] với mọi k < i;
